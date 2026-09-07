@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes"
+    />
+    <title>Koti and Katkoti · forever love</title>
+    <!-- Google Fonts: soft & romantic -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: linear-gradient(135deg, #fff5f7 0%, #ffe6ed 100%);
+        font-family: "Quicksand", sans-serif;
+        color: #5e2a3e;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+      }
+
+      /* main container */
+      .romance-wrapper {
+        max-width: 1300px;
+        width: 100%;
+        background: rgba(255, 250, 245, 0.8);
+        backdrop-filter: blur(3px);
+        border-radius: 2.5rem;
+        box-shadow:
+          0 25px 45px rgba(220, 120, 140, 0.2),
+          0 5px 12px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        transition: all 0.2s;
+      }
+
+      /* header */
+      .love-header {
+        text-align: center;
+        padding: 1.6rem 1rem 1rem;
+        border-bottom: 2px solid rgba(255, 180, 195, 0.5);
+        background: rgba(255, 248, 250, 0.6);
+      }
+      .love-header h1 {
+        font-family: "Dancing Script", cursive;
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(125deg, #e6838c, #c1547a);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        letter-spacing: 1px;
+      }
+      .love-header p {
+        font-size: 0.85rem;
+        color: #b86482;
+        margin-top: 6px;
+        font-weight: 500;
+        opacity: 0.85;
+      }
+
+      /* pages container */
+      .pages {
+        position: relative;
+        min-height: 550px;
+        padding: 2rem 1.8rem 1.8rem;
+      }
+
+      /* page styles */
+      .page {
+        display: none;
+        animation: gentleFade 0.4s ease-out forwards;
+      }
+      .page.active-page {
+        display: block;
+      }
+
+      @keyframes gentleFade {
+        0% {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* footer */
+      .footer-love {
+        text-align: center;
+        padding: 1.2rem 1rem;
+        background: rgba(255, 235, 240, 0.85);
+        border-top: 1px solid #ffccd5;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #c4698a;
+      }
+      .footer-love span {
+        display: inline-block;
+        animation: tinyHeartbeat 1.8s infinite;
+      }
+      @keyframes tinyHeartbeat {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.08);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* buttons */
+      .btn-soft {
+        background: #ffb7c5;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 50px;
+        font-family: "Quicksand", sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        color: #5e2a3e;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        box-shadow: 0 5px 12px rgba(210, 100, 120, 0.2);
+        margin: 0.4rem;
+        display: inline-block;
+      }
+      .btn-soft:hover {
+        background: #ff98af;
+        transform: scale(1.02);
+        box-shadow: 0 10px 20px rgba(200, 80, 100, 0.25);
+      }
+      .btn-soft:active {
+        transform: scale(0.97);
+      }
+
+      /* page1 card */
+      .romance-card {
+        background: rgba(255, 245, 245, 0.95);
+        backdrop-filter: blur(2px);
+        border-radius: 48px;
+        padding: 2rem 1.8rem;
+        text-align: center;
+        max-width: 650px;
+        margin: 0.5rem auto;
+        box-shadow: 0 20px 35px rgba(190, 100, 120, 0.2);
+        border: 1px solid rgba(255, 190, 200, 0.7);
+        transition: transform 0.25s;
+      }
+      .romance-card:hover {
+        transform: translateY(-4px);
+      }
+      .customizable-text {
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: #b84265;
+        margin-bottom: 1.8rem;
+        line-height: 1.4;
+        font-family: "Dancing Script", cursive;
+        background: #fff2f5;
+        border-radius: 40px;
+        padding: 0.8rem 1rem;
+        border: 1px dashed #ffb7c5;
+        cursor: text;
+      }
+      .question-love {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin: 1rem 0;
+        color: #c44d70;
+      }
+      .double-yes {
+        display: flex;
+        justify-content: center;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+
+      /* page2 romantic word */
+      .giant-word {
+        text-align: center;
+        padding: 1.8rem 0.5rem;
+      }
+      .giant {
+        font-size: 3.8rem;
+        font-weight: 700;
+        font-family: "Dancing Script", cursive;
+        background: linear-gradient(135deg, #dd5a7e, #b13b60);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+      .sub-love {
+        font-size: 1.4rem;
+        background: rgba(255, 235, 240, 0.7);
+        display: inline-block;
+        padding: 0.5rem 1.6rem;
+        border-radius: 60px;
+        color: #bc5f7e;
+        font-weight: 500;
+        margin-top: 0.6rem;
+      }
+      .surprise-area {
+        margin-top: 2.5rem;
+      }
+
+      /* page3 split layout */
+      .split-layout {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin: 1rem 0 1.5rem;
+      }
+      .message-col {
+        flex: 1;
+        min-width: 240px;
+        background: #fffbfc;
+        border-radius: 32px;
+        padding: 1.5rem;
+        box-shadow: 0 8px 20px rgba(255, 150, 170, 0.12);
+        border: 1px solid #ffe0e6;
+      }
+      .music-col {
+        flex: 1;
+        min-width: 250px;
+        background: #fffbfc;
+        border-radius: 32px;
+        padding: 1.5rem;
+        box-shadow: 0 8px 20px rgba(255, 150, 170, 0.12);
+        border: 1px solid #ffe0e6;
+      }
+      .section-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #cd5c7e;
+        border-left: 5px solid #ff9eb3;
+        padding-left: 15px;
+        margin-bottom: 1rem;
+      }
+      .personal-message {
+        background: #fff6f9;
+        padding: 1rem;
+        border-radius: 24px;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #59343f;
+        border: 1px dashed #ffbccd;
+        cursor: text;
+      }
+      .music-embed {
+        margin-top: 0.8rem;
+        border-radius: 24px;
+        overflow: hidden;
+      }
+      iframe,
+      audio {
+        width: 100%;
+        border-radius: 20px;
+      }
+      .romantic-sentence {
+        text-align: center;
+        font-style: italic;
+        font-size: 1.1rem;
+        background: #ffeef2;
+        padding: 0.8rem;
+        border-radius: 60px;
+        width: fit-content;
+        margin: 0.5rem auto 1rem;
+        color: #bc5476;
+        font-weight: 500;
+      }
+      .page3-button {
+        text-align: center;
+        margin: 1rem 0 0.5rem;
+      }
+
+      /* page4 gallery */
+      .gallery-header {
+        text-align: center;
+        font-size: 1.6rem;
+        font-weight: 600;
+        background: rgba(255, 225, 235, 0.7);
+        padding: 0.7rem 1rem;
+        border-radius: 60px;
+        width: 90%;
+        margin: 0 auto 2rem auto;
+        color: #c65078;
+        font-family: "Dancing Script", cursive;
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.8rem;
+        margin: 2rem 0 1rem;
+      }
+      .memory-card {
+        background: #fff9fc;
+        width: auto;
+        max-width: 500px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 12px 24px rgba(160, 90, 110, 0.1);
+        transition: all 0.3s ease;
+        border: 3px solid #ffd9e2;
+      }
+      .memory-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 28px rgba(200, 110, 130, 0.2);
+      }
+      .memory-card img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s;
+      }
+      .memory-card:hover img {
+        transform: scale(1.02);
+      }
+      .memory-caption {
+        padding: 12px 12px;
+        text-align: center;
+        font-weight: 600;
+        color: #a3476b;
+        background: #fff1f5;
+        font-size: 0.85rem;
+      }
+      .note-replace {
+        font-size: 0.7rem;
+        text-align: center;
+        margin: 1rem 0 0.2rem;
+        color: #bb7b93;
+      }
+
+      /* responsive design */
+      @media (max-width: 760px) {
+        .pages {
+          padding: 1.5rem;
+        }
+        .giant {
+          font-size: 2.5rem;
+        }
+        .sub-love {
+          font-size: 1.1rem;
+        }
+        .customizable-text {
+          font-size: 1.3rem;
+        }
+        .question-love {
+          font-size: 1.5rem;
+        }
+        .love-header h1 {
+          font-size: 1.9rem;
+        }
+        .btn-soft {
+          padding: 10px 20px;
+          font-size: 0.9rem;
+        }
+        .split-layout {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+        .gallery-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        .romance-card {
+          padding: 1.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .giant {
+          font-size: 2rem;
+        }
+        .gallery-header {
+          font-size: 1.3rem;
+        }
+        .btn-soft {
+          width: auto;
+          padding: 8px 18px;
+        }
+        .double-yes {
+          gap: 0.8rem;
+        }
+      }
+
+      /* extra softness */
+      hr {
+        border: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #ffbfcf, transparent);
+        margin: 1rem 0;
+      }
+      [contenteditable="true"]:focus {
+        outline: 2px solid #ffb2c2;
+        background-color: #fff0f3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="romance-wrapper">
+      <div class="love-header">
+        <h1>✨ koti and katkoti website ✨</h1>
+        <p>♡ A LOT OF LOVE JUST FOR YOU ♡</p>
+      </div>
+
+      <div class="pages">
+        <!-- PAGE 1 (HOME) -->
+        <div id="page1" class="page active-page">
+          <div class="romance-card">
+            <div
+              id="editableLoveMsg"
+              class="customizable-text"
+              contenteditable="true"
+            >
+              To open this website please answer babe 😊
+            </div>
+            <div class="question-love">❤️ Do you love me 🥺?❤️</div>
+            <div class="double-yes">
+              <button class="btn-soft yes-btn">❤️ Yes ❤️</button>
+              <button class="btn-soft yes-btn">❤️ Yes ❤️</button>
+            </div>
+            <p style="margin-top: 24px; font-size: 0.75rem; opacity: 0.7">
+              ✨ There is no option ✨
+            </p>
+          </div>
+        </div>
+
+        <!-- PAGE 2 (big romantic word) -->
+        <div id="page2" class="page">
+          <div class="giant-word">
+            <div class="giant">∞ I know iiittt ∞</div>
+            <div class="sub-love">Love you more and more memo❤️❤️❤️</div>
+            <div class="surprise-area">
+              <button id="surpriseBtnPage2" class="btn-soft">
+                😘 Surprise 😘
+              </button>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: #bf6f8a">
+              ☆ The greatest surprise is you 😉, always and forever ☆
+            </p>
+          </div>
+        </div>
+
+        <!-- PAGE 3 (long message + music) -->
+        <div id="page3" class="page">
+          <div class="split-layout">
+            <!-- left: long message section (editable) -->
+            <div class="message-col">
+              <div class="section-title">This message for you koti 😘:</div>
+              <div
+                id="personalLongMsg"
+                class="personal-message"
+                contenteditable="true"
+              >
+                يمكن الفتره دي علاقتنا متوتره شويه، أو كل واحد فينا عنده مشاكل
+                والدنيا مش ألذ حاجه معانا إحنا الاتنين... ورغم ده كله، إحنا برضو
+                بنحاول نبقى مع بعض ونساعد ونسند بعض مهما حصل. بس اللي عايزاك
+                تعرفه وتتأكد منه، إني فعلاً بحبك والله، ومهتمه بيك وبكل تفاصيلك.
+                ومش عايزاك تشك في حاجه زي دي أبدًا. أنا في العادي مباهتمش
+                بالتفاصيل، بس معاك إنت الموضوع مختلف... أنا مهتمه بأدق تفاصيلك.
+                اللي حصل امبارح كان غصب عني والله، إنت عارف إني مبنامش بقالي
+                فتره ودماغي مش معايا، بس حاولت أفتكر... وافتكرت. أنا آسفه والله
+                لو كنت قفلت لك اليوم أو زعلتك مني، إنت عارف إن أكتر حاجه بكرهها
+                في الدنيا دي، إنك تبقى متضايق مني أو مش طايقني. الإحساس ده
+                بيجرحني جدًا... وقلبي بيتوجع لما تحس كده ناحيتي. عملت لك الويب
+                ده عشان يفضل ذكرى عندك، وكل ما أوحشك تدخل تشوفه وتلف فيه، عشان
+                هو معمول بكل حب... من قلب بيحبك بجد، ومستعد يعمل كل حاجه عشانك.
+                اعتبر الويب سايت ده حضني ليك، لما مبقاش جنبك ومش عارف تحضنني،
+                خلي الألوان دي تهون عليك. واتأكد إني هفضل بحبك على طول يا ميمو❤️
+                كنت عايزه أحط لك أغنيه وياه، بس أنا حطيتهالك في الويب سايت اللي
+                فات. فأكتر أغنيه نفسي نعيشها سوا دلوقتي هي دي... بهديك الأغنيه
+                دي من قلبي يا كوتي، وأتمنى الويب سايت ده يكون عجبك ❤️
+              </div>
+            </div>
+            <!-- right: music section (romantic embed) -->
+            <div class="music-col">
+              <div class="section-title">Listen to our love ❤️</div>
+              <div class="music-embed">
+                <!-- romantic song embed (instrumental love) - user can replace with any romantic track -->
+                <iframe
+                  width="100%"
+                  height="400"
+                  src="https://www.youtube.com/embed/M0_qWLmpHvo"
+                  title="romantic love song"
+                  frameborder="0"
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                  "
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                  style="border-radius: 24px"
+                ></iframe>
+                <p style="font-size: 0.7rem; margin-top: 8px; color: #b45f7c">
+                  ✨ نسيني الماضي بجرحة و خدني في حضنك ✨
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="romantic-sentence">
+            لو خيروني بينك وبين الدنيا.. اختارك مرتين.. 🫶🏻🫀بحبك
+          </div>
+          <div class="page3-button">
+            <button id="toPage4Btn" class="btn-soft">
+              زهقت مني ولا ايه ! لسى لسى
+            </button>
+          </div>
+        </div>
+
+        <!-- PAGE 4 (Final Page: gallery of memories) -->
+        <div id="page4" class="page">
+          <div class="gallery-header">
+            This the most starred message from you that made me so happy 😍
+          </div>
+          <div class="gallery-grid" id="memoryGallery">
+            <!-- gallery items: chat & memory screenshots placeholders (user will replace images) -->
+            <div class="memory-card">
+              <img src="images/1.jpeg" alt="memory 1" />
+              <div class="memory-caption">koti and forever kottiiiii❤️</div>
+            </div>
+            <div class="memory-card">
+              <img src="images/2.jpeg" alt="sweet conversation" />
+              <div class="memory-caption">❤️احلا راجل في الدنيا فعلا والله</div>
+            </div>
+            <div class="memory-card">
+              <img src="images/3.jpeg" />
+              <div class="memory-caption">
+                ☺️ حبستك في حبي خلاص مش هسيبك في حالك
+              </div>
+            </div>
+            <div class="memory-card">
+              <img src="images/4.jpeg" alt="surprise memory" />
+              <div class="memory-caption">
+                🥺 وانت واحشني اوي اوي اوي اوووووووووييييييييييي
+              </div>
+            </div>
+            <div class="memory-card">
+              <img src="images/5.jpeg" alt="promise chat" />
+              <div class="memory-caption">
+                😔 طب بخصوص اني محتاجة حضنك انا كمان جدااا
+              </div>
+            </div>
+            <div class="memory-card">
+              <img src="images/6.jpeg" alt="romantic memory" />
+              <div class="memory-caption">يارب تفضل دايما شايفني جميلة كده</div>
+            </div>
+          </div>
+          <div class="note-replace">
+            الكلام الحلو الي لامس قلبي اكثر من كده بكثير ، بس مهما قلت و مهما
+            عبرت عن مشاعري ستل الحب الي جوايا اكثر مما تتخيل
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-love">
+        <span>&copy;🌸 made with love from your gf 🌸</span>
+      </div>
+    </div>
+
+    <script>
+      // page navigation logic
+      const page1 = document.getElementById("page1");
+      const page2 = document.getElementById("page2");
+      const page3 = document.getElementById("page3");
+      const page4 = document.getElementById("page4");
+      const allPages = [page1, page2, page3, page4];
+
+      function showPage(pageNumber) {
+        allPages.forEach((page, idx) => {
+          if (idx + 1 === pageNumber) {
+            page.classList.add("active-page");
+          } else {
+            page.classList.remove("active-page");
+          }
+        });
+        // smooth scroll to top after page change
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // Page 1 → both Yes buttons go to page2
+      const yesButtons = document.querySelectorAll(".yes-btn");
+      yesButtons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          showPage(2);
+        });
+      });
+
+      // Page 2 → Surprise button goes to page3
+      const surpriseBtn = document.getElementById("surpriseBtnPage2");
+      if (surpriseBtn) {
+        surpriseBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          showPage(3);
+        });
+      }
+
+      // Page 3 → button to page4
+      const toPage4 = document.getElementById("toPage4Btn");
+      if (toPage4) {
+        toPage4.addEventListener("click", (e) => {
+          e.preventDefault();
+          showPage(4);
+        });
+      }
+
+      // optional: allow customizable text for home and long message (already contenteditable)
+      // to meet "I will edit it later" we make it explicit
+      const homeEditable = document.getElementById("editableLoveMsg");
+      const longMsgEditable = document.getElementById("personalLongMsg");
+      if (homeEditable) homeEditable.setAttribute("contenteditable", "true");
+      if (longMsgEditable)
+        longMsgEditable.setAttribute("contenteditable", "true");
+
+      // tiny extra: gallery images can be replaced by user, but we provide placeholder text.
+      // no extra required, but we ensure mobile touch works fine.
+      // also add a gentle hover effect for memory cards already in css.
+      // ensure music iframe is responsive
+
+      // ensure all buttons prevent default anchor-like behavior
+      const allBtns = document.querySelectorAll(".btn-soft");
+      allBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          // just to avoid any weirdness, but navigation already defined
+          e.stopPropagation();
+        });
+      });
+
+      // console greeting
+      console.log(
+        "🌸 koti & katkoti — made with endless love, fully responsive & romantic 🌸",
+      );
+    </script>
+  </body>
+</html>
